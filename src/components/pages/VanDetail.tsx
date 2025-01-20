@@ -1,6 +1,6 @@
-import { useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import './css/vandetail.css'
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import './css/vandetail.css';
 
 interface Van {
     id: string;
@@ -12,14 +12,15 @@ interface Van {
 }
 
 export default function VanDetail() {
-    const params = useParams()
-    const [van, setVan] = useState<Van | null>(null)
+    const params = useParams();
+    const [van, setVan] = useState<Van | null>(null);
 
     useEffect(() => {
         fetch(`/api/vans/${params.id}`)
             .then(res => res.json())
             .then(data => setVan(data.vans))
-    }, [params.id])
+            .catch(error => console.error("Error fetching van details:", error));
+    }, [params.id]);
 
     return (
         <div className="van-detail-container">
@@ -35,5 +36,5 @@ export default function VanDetail() {
                 <h2>Loading...</h2>
             )}
         </div>
-    )
+    );
 }
