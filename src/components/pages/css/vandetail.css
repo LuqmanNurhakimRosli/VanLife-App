@@ -46,6 +46,23 @@
     letter-spacing: -0.025em;
 }
 
+.link-button {
+    background-color: #FFEAD0;
+    color: #4D4D4D;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 24px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: capitalize;
+    letter-spacing: 0.025em;
+    box-shadow: 0 4px 6px -1px rgba(225, 118, 84, 0.3);
+}
+
 .van-type {
     height: 34px;
     padding: 8px 32px;
