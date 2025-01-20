@@ -1,7 +1,7 @@
 import About from './components/pages/About'
 import Home from './components/pages/home' // Ensure this matches the actual file name
 import Vans from './components/pages/Vans'
-import VanDetails from './components/pages/VanDetails'
+import VanDetail from './components/pages/VanDetail'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import './App.css'
 
@@ -20,7 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/vans" element={<Vans />} />
-        <Route path="/vans/:id" element={<VanDetails />} />
+        <Route path="/vans/:id" element={<VanDetail />} />
       </Routes>
     </Router>
   )
