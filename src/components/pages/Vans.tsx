@@ -1,4 +1,5 @@
 import React from "react";
+import './css/vans.css'
 
 // Define the Van interface
 interface Van {
