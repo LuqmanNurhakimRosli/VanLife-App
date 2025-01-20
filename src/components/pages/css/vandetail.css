@@ -1,0 +1,119 @@
+.van-detail-container {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.van-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.van-detail img {
+    width: 50%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    transition: transform 0.3s ease;
+}
+
+.van-detail img:hover {
+    transform: scale(1.01);
+}
+
+.van-detail h2 {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    color: #161616;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.van-type {
+    height: 34px;
+    padding: 8px 32px;
+    font-style: normal;
+    font-weight: 600;
+    border: none;
+    border-radius: 999px;
+    background-color: #FFEAD0;
+    color: #4D4D4D;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: capitalize;
+    letter-spacing: 0.025em;
+}
+
+.van-type:hover {
+    color: #FFEAD0;
+    transform: translateY(-1px);
+}
+
+.van-type:focus {
+    outline: 2px solid #4D4D4D;
+    outline-offset: 2px;
+}
+
+.van-type.selected {
+    color: #FFEAD0;
+}
+
+.van-type.simple:hover, .van-type.simple.selected {
+    background-color: #E17654;
+    box-shadow: 0 4px 6px -1px rgba(225, 118, 84, 0.3);
+}
+
+.van-type.rugged:hover, .van-type.rugged.selected {
+    background-color: #115E59;
+    box-shadow: 0 4px 6px -1px rgba(17, 94, 89, 0.3);
+}
+
+.van-type.luxury:hover, .van-type.luxury.selected {
+    background-color: #161616;
+    box-shadow: 0 4px 6px -1px rgba(22, 22, 22, 0.3);
+}
+
+.van-price {
+    font-size: 1.25rem;
+    margin: 16px 0;
+    color: #4D4D4D;
+}
+
+.van-price span {
+    font-weight: 800;
+    font-size: 2rem;
+    color: #161616;
+}
+
+.van-description {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: #4D4D4D;
+    max-width: 65ch;
+    margin-top: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .van-detail-container {
+        padding: 20px;
+    }
+    
+    .van-detail {
+        padding: 20px;
+    }
+    
+    .van-detail h2 {
+        font-size: 2rem;
+    }
+    
+    .van-price span {
+        font-size: 1.75rem;
+    }
+}
