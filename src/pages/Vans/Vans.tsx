@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './css/vans.css'
+import '../css/vans.css'
 
 // Define the Van interface
 interface Van {

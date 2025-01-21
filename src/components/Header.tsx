@@ -3,14 +3,14 @@ import './css/header.css'
 
 function Header() {
   return (
-    <header className="App-header">
-        <Link className='logo-brand' to="/">#VanLife</Link>
-        <nav className='nav'>
-          <Link to='/'>Home</Link>
-          <Link to='/about'>About</Link>
-          <Link to='/vans'>Vans</Link>
+    <header>
+        <Link to="/" className="logo-brand">#VANLIFE</Link>
+        <nav className="nav">
+            <Link to="/host">Host</Link>
+            <Link to="/about">About</Link>
+            <Link to="/vans">Vans</Link>
         </nav>
-      </header>
+    </header>
   )
 }
 

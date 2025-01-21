@@ -1,11 +1,14 @@
 import {Outlet} from 'react-router-dom'
 import Header from './Header'
+import './css/layout.css'
 
 function Layout() {
   return (
     <>
         <Header />
-        <Outlet />
+        <div className="outlet-wrapper">
+            <Outlet />
+        </div>
     </>
   )
 }

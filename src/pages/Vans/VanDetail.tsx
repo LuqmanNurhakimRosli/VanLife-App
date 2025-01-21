@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import './css/vandetail.css';
+import '../css/vandetail.css';
 
 interface Van {
     id: string;
