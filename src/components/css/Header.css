@@ -1,82 +1,123 @@
 /* Header Styles */
 header {
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    background-color: #FFF7ED;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background-color: #fff7ed;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Keeps header at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* Logo Branding */
+.logo-brand {
+  color: #161616;
+  font-size: 1.25rem;
+  font-weight: 900;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+/* Navigation Styles */
+.nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #4d4d4d;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav a:hover {
+  color: #161616;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.active-link {
+  font-weight: bold !important;
+  color: #161616 !important;
+  position: relative;
+}
+
+.active-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #161616;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+/* Main Content Adjustment for Fixed Header */
+main {
+  margin-top: 80px; /* Creates space below the fixed header */
+}
+
+/* Responsive Breakpoints for Header */
+@media (max-width: 768px) {
+  header {
+    height: 70px;
+    padding: 0 15px;
   }
-  
+
   .logo-brand {
-    color: #161616;
-    font-size: 1.25rem;
-    font-weight: 900;
-    text-decoration: none;
-    text-transform: uppercase;
+    font-size: 1.1rem;
   }
-  
+
   .nav {
-    display: flex;
-    gap: 15px;
+    gap: 10px;
   }
-  
+
   .nav a {
-    text-decoration: none;
-    color: #4D4D4D;
-    font-weight: 600;
-    padding: 5px 10px;
-    transition: color 0.3s ease;
+    font-size: 0.875rem;
+    padding: 5px 8px;
   }
-  
-  .nav a:hover {
-    color: #161616;
-    text-decoration: underline;
+
+  main {
+    margin-top: 70px; /* Adjust for reduced header height */
   }
-  
-  /* Responsive Breakpoints for Header */
-  @media (max-width: 768px) {
-    header {
-      height: 70px;
-      padding: 0 15px;
-    }
-  
-    .logo-brand {
-      font-size: 1.1rem;
-    }
-  
-    .nav {
-      gap: 10px;
-    }
-  
-    .nav a {
-      font-size: 0.875rem;
-      padding: 5px 8px;
-    }
+}
+
+@media (max-width: 480px) {
+  header {
+    height: 60px;
+    padding: 0 10px;
   }
-  
-  @media (max-width: 480px) {
-    header {
-      height: 60px;
-      padding: 0 10px;
-    }
-  
-    .logo-brand {
-      font-size: 1rem;
-    }
-  
-    .nav {
-      gap: 8px;
-    }
-  
-    .nav a {
-      font-size: 0.75rem;
-      padding: 5px;
-    }
+
+  .logo-brand {
+    font-size: 1rem;
   }
+
+  .nav {
+    gap: 8px;
+  }
+
+  .nav a {
+    font-size: 0.75rem;
+    padding: 5px;
+  }
+
+  main {
+    margin-top: 60px; /* Adjust for further reduced header height */
+  }
+}
+
+/* Smooth Scrolling for Navigation (Optional) */
+html {
+  scroll-behavior: smooth;
+}

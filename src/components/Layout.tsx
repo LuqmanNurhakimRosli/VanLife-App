@@ -6,13 +6,13 @@ import './css/layout.css'
 
 function Layout() {
   return (
-    <>
+    <div>
         <Header />
         <main className="outlet-wrapper">
             <Outlet />
         </main>
         <Footer />
-    </>
+    </div>
   )
 }
 
