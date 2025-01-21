@@ -9,6 +9,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Layout from './components/Layout'
 import HostLayout from './components/HostLayout'
+import HostVans from './components/HostVans'
+import HostVansDetail from './components/HostVansDetail'
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="host" element={<HostLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="income" element={<Income />} />
+            <Route path="vans" element={<HostVans />} />
+            <Route path="vans/:id" element={<HostVansDetail />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
 
