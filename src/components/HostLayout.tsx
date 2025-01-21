@@ -9,7 +9,8 @@ function HostLayout() {
             <NavLink 
             className={({ isActive }) => (isActive ? "active-link" : undefined)}
              to="/host"
-             end>
+             //dapat hentikan render children jika route ini active
+             end = {true}>
             Dashboard
             </NavLink>
 
