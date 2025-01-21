@@ -1,0 +1,82 @@
+/* Header Styles */
+header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: #FFF7ED;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  
+  .logo-brand {
+    color: #161616;
+    font-size: 1.25rem;
+    font-weight: 900;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .nav a {
+    text-decoration: none;
+    color: #4D4D4D;
+    font-weight: 600;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav a:hover {
+    color: #161616;
+    text-decoration: underline;
+  }
+  
+  /* Responsive Breakpoints for Header */
+  @media (max-width: 768px) {
+    header {
+      height: 70px;
+      padding: 0 15px;
+    }
+  
+    .logo-brand {
+      font-size: 1.1rem;
+    }
+  
+    .nav {
+      gap: 10px;
+    }
+  
+    .nav a {
+      font-size: 0.875rem;
+      padding: 5px 8px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    header {
+      height: 60px;
+      padding: 0 10px;
+    }
+  
+    .logo-brand {
+      font-size: 1rem;
+    }
+  
+    .nav {
+      gap: 8px;
+    }
+  
+    .nav a {
+      font-size: 0.75rem;
+      padding: 5px;
+    }
+  }

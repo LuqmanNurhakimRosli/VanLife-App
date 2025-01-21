@@ -1,5 +1,4 @@
-import bgImg from "../../assets/images/van-sec.jpg"
-import { Link } from "react-router-dom"
+import bgImg from "../assets/images/van-sec.jpg"
 import './css/about.css'
 export default function About() {
     return (
