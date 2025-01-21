@@ -1,3 +1,12 @@
+.host-container {
+    margin-top: 80px; /* Matches the header height */
+    padding: 20px;
+}
+
+.host-content {
+    padding: 20px;
+}
+
 .host-nav{
     margin-top: 100px;
     gap: 20px;
@@ -20,3 +29,22 @@
     background-color: #FFEAD0;
     color: #4D4D4D;
 }
+
+.host-nav .active-link {
+    font-weight: bold !important;
+    color: #161616 !important;
+    position: relative;
+  }
+  
+  .active-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #161616;
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+  
