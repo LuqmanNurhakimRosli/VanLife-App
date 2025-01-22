@@ -1,35 +1,25 @@
-import {useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom'
-import '../css/hostVansTabs.css'
+import { useOutletContext } from "react-router-dom";
+import '../css/hostVansTabs.css';
 
-interface VanInfo {
+interface Van {
     id: string;
     name: string;
-    type: string;
-    description: string;
     price: number;
+    type: string;
+    imageUrl: string;
+    hostId: string;
 }
 
-function HostVansPrice() {
-    const [information, setInformation] = useState<VanInfo | null>(null);
+interface HostVansDetailContext {
+    currentVan: Van | null;
+}
 
-    const {id} = useParams();
-
-    useEffect(() => {
-        fetch(`/api/host/vans/${id}`)
-            .then(res => res.json())
-            .then(data => setInformation(data.vans))
-    }, [id])
-
-    if (!information) {
-        return <h2 className="loading">Loading...</h2>
-    }
+export default function HostVansPrice() {
+    const { currentVan } = useOutletContext<HostVansDetailContext>();
 
     return (
-        <div className="host-van-tab host-van-price">
-            <h3>${information.price}<span>/day</span></h3>
+        <div className="host-van-price">
+            <h3 className="host-van-price-title">${currentVan?.price}<span>/day</span></h3>
         </div>
-    )
+    );
 }
-
-export default HostVansPrice

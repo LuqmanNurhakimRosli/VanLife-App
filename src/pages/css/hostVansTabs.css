@@ -1,76 +1,72 @@
-/* Common styles for all tabs */
-.host-van-tab {
-    padding: 1.5rem;
+/* General Styles for Host Van Tabs */
+.host-van-detail-info,
+.host-van-photos,
+.host-van-price {
     background-color: white;
-    border-radius: 6px;
-    margin-top: 1rem;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
-/* Info tab styles */
-.host-van-info h3 {
-    margin: 0;
+/* Host Van Info Styles */
+.host-van-detail-info h4 {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #4D4D4D;
+}
+
+.host-van-detail-info h4 span {
+    font-weight: bold;
+    color: #161616;
+}
+
+/* Host Van Photos Styles */
+.host-van-photos img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Host Van Price Styles */
+.host-van-price-title {
     font-size: 1.5rem;
     color: #161616;
-}
-
-.host-van-info p {
-    margin-top: 0.75rem;
-    margin-bottom: 0.5rem;
-    color: #4d4d4d;
-    line-height: 1.5;
-}
-
-.host-van-info .type-label {
-    font-weight: 500;
-    color: #161616;
-}
-
-/* Photos tab styles */
-.host-van-photos {
-    display: flex;
-    justify-content: center;
-}
-
-.host-van-photos img {
-    max-width: 100%;
-    border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Price tab styles */
-.host-van-price h3 {
-    font-size: 1.75rem;
-    color: #161616;
     margin: 0;
 }
 
-.host-van-price span {
+.host-van-price-title span {
     font-size: 1rem;
-    color: #4d4d4d;
-    font-weight: normal;
-    margin-left: 0.25rem;
+    color: #4D4D4D;
 }
 
-/* Loading state */
-.loading {
-    text-align: center;
-    color: #4d4d4d;
-    font-size: 1.25rem;
-    padding: 2rem;
-}
-
-/* Responsive design */
+/* Responsive Design */
 @media (max-width: 768px) {
-    .host-van-tab {
-        padding: 1rem;
+    .host-van-detail-info h4 {
+        font-size: 0.875rem;
     }
 
-    .host-van-info h3,
-    .host-van-price h3 {
+    .host-van-price-title {
         font-size: 1.25rem;
     }
 
-    .host-van-price span {
+    .host-van-price-title span {
         font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .host-van-detail-info h4 {
+        font-size: 0.75rem;
+    }
+
+    .host-van-price-title {
+        font-size: 1rem;
+    }
+
+    .host-van-price-title span {
+        font-size: 0.75rem;
     }
 }

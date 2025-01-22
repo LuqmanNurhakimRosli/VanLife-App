@@ -1,36 +1,27 @@
-import {useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom'
-import '../css/hostVansTabs.css'
+import { useOutletContext } from "react-router-dom";
 
-interface VanInfo {
+interface Van {
     id: string;
     name: string;
+    price: number;
     type: string;
-    description: string;
+    imageUrl: string;
+    hostId: string;
+    description?: string;
 }
 
-function HostVansInfo() {
-    const [information, setInformation] = useState<VanInfo | null>(null);
-
-    const {id} = useParams();
-
-    useEffect(() => {
-        fetch(`/api/host/vans/${id}`)
-            .then(res => res.json())
-            .then(data => setInformation(data.vans))
-    }, [id])
-
-    if (!information) {
-        return <h2 className="loading">Loading...</h2>
-    }
-
-    return (
-        <div className="host-van-tab host-van-info">
-            <h3>{information.name}</h3>
-            <p><span className="type-label">Type: </span>{information.type}</p>
-            <p><span className="type-label">Description: </span>{information.description}</p>
-        </div>
-    )
+interface HostVansDetailContext {
+    currentVan: Van | null;
 }
 
-export default HostVansInfo
+export default function HostVansInfo() {
+    const { currentVan } = useOutletContext<HostVansDetailContext>();
+  return (
+    <section className="host-van-detail-info">
+            <h4>Name: <span>{currentVan?.name}</span></h4>
+            <h4>Category: <span>{currentVan?.type}</span></h4>
+            <h4>Description: <span>{currentVan?.description}</span></h4>
+            <h4>Visibility: <span>Public</span></h4>
+        </section>
+  )
+}
