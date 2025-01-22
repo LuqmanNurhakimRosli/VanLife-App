@@ -3,7 +3,7 @@ import Home from './pages/home' // Ensure this matches the actual file name
 import Vans from './pages/Vans/Vans'
 import VanDetail from './pages/Vans/VanDetail'
 import Dashboard from './pages/Host/Dashboard'
-import Income from './pages/Host/income'
+import Income from './pages/Host/Income'
 import Reviews from './pages/Host/Reviews'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
