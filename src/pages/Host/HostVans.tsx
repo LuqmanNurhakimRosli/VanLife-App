@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import './css/hostvans.css';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import "../css/hostvans.css";
 
 interface Van {
   id: string;

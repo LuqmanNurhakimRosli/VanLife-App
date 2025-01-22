@@ -8,9 +8,9 @@ import Reviews from './pages/Host/Reviews'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Layout from './components/Layout'
-import HostLayout from './components/HostLayout'
-import HostVans from './components/HostVans'
-import HostVansDetail from './components/HostVansDetail'
+import HostLayout from './pages/Host/HostLayout'
+import HostVans from './pages/Host/HostVans'
+import HostVansDetail from './pages/Host/HostVansDetail'
 
 function App() {
   return (

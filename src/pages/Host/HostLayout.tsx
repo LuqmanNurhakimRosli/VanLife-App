@@ -1,5 +1,5 @@
 import {Outlet, NavLink} from 'react-router-dom'
-import './css/hostlayout.css'
+import '../css/HostLayout.css'
 
 function HostLayout() {
   return (
