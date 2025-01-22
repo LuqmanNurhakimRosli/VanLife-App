@@ -1,6 +1,6 @@
 .outlet-wrapper {
-    margin-top: 20px;
-    padding-bottom: 50px; /* Add space for fixed footer */
+    margin-top: 30px;
+    /* margin-bottom: 20px; Add space for fixed footer */
     min-height: calc(100vh - 100px); /* Ensure content fills viewport */
 }
 html, body {
