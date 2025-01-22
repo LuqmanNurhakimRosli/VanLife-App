@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import '../css/vans.css'
 
 // Define the Van interface
@@ -14,6 +14,9 @@ interface Van {
 export default function Vans() {
     // Use the Van interface in useState
     const [vans, setVans] = React.useState<Van[]>([]);
+
+    const[searchParams, setSearchParams] = useSearchParams();
+    const typeFilter = searchParams.get("type")
 
     React.useEffect(() => {
         fetch("/api/vans")
