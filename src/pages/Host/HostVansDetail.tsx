@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Outlet } from "react-router-dom";
 import "../css/hostvansdetail.css";
 
 interface Van {
@@ -49,6 +49,7 @@ export default function HostVansDetail() {
                     </div>
                 </div>
             </div>
+            <Outlet />
         </section>
     );
 } 
