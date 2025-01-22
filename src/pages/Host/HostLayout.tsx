@@ -8,24 +8,24 @@ function HostLayout() {
 
             <NavLink 
             className={({ isActive }) => (isActive ? "active-link" : undefined)}
-             to="/host"
+             to="."
              //dapat hentikan render children jika route ini active
              end = {true}>
             Dashboard
             </NavLink>
 
             <NavLink className={({ isActive }) => (isActive ? "active-link" : undefined)} 
-            to="/host/income">
+            to="income">
             Income
             </NavLink>
 
             <NavLink className={({ isActive }) => (isActive ? "active-link" : undefined)} 
-            to="/host/vans">
+            to="vans">
             Vans
             </NavLink>
 
             <NavLink className={({ isActive }) => (isActive ? "active-link" : undefined)} 
-            to="/host/reviews">
+            to="reviews">
             Reviews
             </NavLink>
 

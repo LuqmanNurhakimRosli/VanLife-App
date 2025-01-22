@@ -21,7 +21,7 @@ export default function HostVansDetail() {
             .then(data => {
                 setCurrentVan(data.vans);
             })
-    }, [])
+    }, [id])
 
     if (!currentVan) {
         return <h2>Loading...</h2>;
