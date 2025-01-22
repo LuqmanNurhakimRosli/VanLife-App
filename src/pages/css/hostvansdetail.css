@@ -1,98 +1,138 @@
+/* hostvansdetail.css */
+
+/* General Section Styling */
 .host-van-detail-section {
     padding: 20px;
-    padding-top: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Back Button Styling */
 .back-button {
     display: inline-flex;
     align-items: center;
     text-decoration: none;
-    color: #201F1D;
-    margin-bottom: 30px;
+    color: #4D4D4D;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.back-button:hover {
+    text-decoration: underline;
 }
 
 .back-button span {
     margin-left: 5px;
 }
 
+/* Van Detail Container */
 .host-van-detail-container {
     background-color: white;
-    border-radius: 6px;
-    padding: 24px;
-    margin: 30px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
+/* Van Detail Layout with Flexbox */
 .host-van-detail {
     display: flex;
-    align-items: center;
-    gap: 20px;
+    gap: 20px; /* Space between image and info */
+    align-items: center; /* Vertically center items */
 }
 
-.host-van-detail > img {
-    width: 160px;
-    height: 160px;
-    border-radius: 5px;
+/* Van Image Styling */
+.host-van-detail img {
+    width: 50%; /* Take up half of the container */
+    max-width: 400px; /* Limit image size */
+    height: auto;
+    border-radius: 10px;
     object-fit: cover;
 }
 
+/* Van Info Styling */
 .host-van-detail-info {
-    flex-grow: 1;
+    flex: 1; /* Take up remaining space */
+    text-align: left; /* Align text to the left */
 }
 
 .host-van-detail-info h2 {
-    margin: 10px 0;
     font-size: 2rem;
-    font-weight: 700;
+    margin: 10px 0;
     color: #161616;
 }
 
-.van-type {
-    height: 34px;
-    padding: 6px 26px;
-    font-style: normal;
-    font-weight: 500;
-    border: none;
-    border-radius: 5px;
-    background-color: #FFEAD0;
+.van-price {
+    font-size: 1.5rem;
     color: #4D4D4D;
-    transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 10px 0;
+}
+
+.van-price span {
+    font-weight: bold;
+    color: #161616;
+}
+
+/* Van Type Styling */
+.van-type {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.875rem;
+    font-weight: 500;
     text-transform: capitalize;
+    color: white;
 }
 
 .van-type.simple {
     background-color: #E17654;
-    color: #FFEAD0;
 }
 
 .van-type.rugged {
     background-color: #115E59;
-    color: #FFEAD0;
 }
 
 .van-type.luxury {
     background-color: #161616;
-    color: #FFEAD0;
 }
 
-.van-price {
-    font-size: 1.25rem;
-    margin-top: 10px;
-}
-
-.van-price span {
-    font-weight: 700;
-    font-size: 1.5rem;
-}
-
+/* Responsive Design */
 @media (max-width: 768px) {
-    .host-van-detail {
-        flex-direction: column;
-        text-align: center;
+    .host-van-detail-section {
+        padding-top: 60px;
     }
 
-    .host-van-detail > img {
-        width: 100%;
-        max-width: 400px;
-        height: auto;
+    .host-van-detail {
+        flex-direction: column; /* Stack image and info vertically on smaller screens */
+    }
+
+    .host-van-detail img {
+        width: 100%; /* Full width for smaller screens */
+    }
+
+    .host-van-detail-info {
+        text-align: center; /* Center text on smaller screens */
+    }
+
+    .host-van-detail-info h2 {
+        font-size: 1.75rem;
+    }
+
+    .van-price {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .host-van-detail-section {
+        padding: 10px;
+        padding-top: 50px;
+    }
+
+    .host-van-detail-info h2 {
+        font-size: 1.5rem;
+    }
+
+    .van-price {
+        font-size: 1rem;
     }
 }
