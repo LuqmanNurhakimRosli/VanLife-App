@@ -84,6 +84,60 @@
       background-color: #161616;
       color: white;
   }
+  .filter-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    background-color: #f4f4f4;
+    color: #4D4D4D;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filter-container button:hover {
+    background-color: #e0e0e0;
+}
+
+.filter-container button:active {
+    transform: scale(0.98);
+}
+
+/* Active Filter Button */
+.filter-container button[data-active="true"] {
+    background-color: #161616;
+    color: white;
+}
+
+/* Specific Styles for Each Filter Type */
+.filter-container button[data-type="simple"] {
+    background-color: #E17654;
+    color: white;
+}
+
+.filter-container button[data-type="luxury"] {
+    background-color: #161616;
+    color: white;
+}
+
+.filter-container button[data-type="rugged"] {
+    background-color: #115E59;
+    color: white;
+}
+
+/* Clear Filter Button */
+.filter-container button[data-type="clear"] {
+    background-color: #4D4D4D;
+    color: white;
+}
   /* Responsive Styles for Vans */
   @media (max-width: 768px) {
     .van-list-container h1 {
