@@ -29,7 +29,7 @@ export default function HostVansDetail() {
 
     return (
         <section className="host-van-detail-section">
-            <Link
+             <Link
                 to=".."
                 relative="path"
                 className="back-button"
