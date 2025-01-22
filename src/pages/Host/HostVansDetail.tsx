@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, Link, Outlet, NavLink } from "react-router-dom";
 import "../css/hostvansdetail.css";
 
 interface Van {
@@ -49,6 +49,29 @@ export default function HostVansDetail() {
                     </div>
                 </div>
             </div>
+
+            <nav className="host-van-detail-nav">
+              <NavLink
+                  to="."
+                  end
+                  className={({isActive}) => (isActive ? "active-link" : undefined)}
+                >
+                  Details
+                </NavLink>
+                <NavLink
+                    to="pricing"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Pricing
+                </NavLink>
+                <NavLink
+                    to="photos"
+                    className={({ isActive }) => (isActive ? "active-link" : undefined)}
+                >
+                    Photos
+                </NavLink>
+                
+            </nav>
             <Outlet />
         </section>
     );
