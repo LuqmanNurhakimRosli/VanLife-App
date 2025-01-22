@@ -25,7 +25,10 @@ export default function Vans() {
             .catch(error => console.error("Error fetching vans:", error));
     }, []);
 
-    const vanElements = vans.map((van) => (
+    const displayedVans = typeFilter
+    ? vans.filter( van => van.type === typeFilter)
+    : vans;
+    const vanElements = displayedVans.map((van) => (
         <div key={van.id} className="van-tile">
           <Link to={`/vans/${van.id}`} >
             <img src={van.imageUrl} alt={van.name} />
