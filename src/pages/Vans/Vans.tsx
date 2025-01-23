@@ -34,7 +34,7 @@ export default function Vans() {
     //nak dsiplay render  semua vans based on useEffect
     const vanElements = displayedVans.map((van) => (
         <div key={van.id} className="van-tile">
-          <Link to={`/vans/${van.id}`} >
+          <Link to={van.id} >
             <img src={van.imageUrl} alt={van.name} />
             <div className="van-info">
               <h3>{van.name}</h3>
