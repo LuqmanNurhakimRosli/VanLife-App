@@ -25,9 +25,13 @@ export default function Vans() {
             .catch(error => console.error("Error fetching vans:", error));
     }, []);
 
+
+    //nak filter by type
     const displayedVans = typeFilter
     ? vans.filter( van => van.type === typeFilter)
     : vans;
+
+    //nak dsiplay render  semua vans based on useEffect
     const vanElements = displayedVans.map((van) => (
         <div key={van.id} className="van-tile">
           <Link to={`/vans/${van.id}`} >
