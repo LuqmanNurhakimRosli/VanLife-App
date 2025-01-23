@@ -61,7 +61,7 @@ export default function Vans() {
     
       return (
         <div className="van-list-container">
-          <h1>Explore our van options</h1>
+          <h1 className="header-title">Explore our van options</h1>
 
           <div className="filter-container">
             {/* //dua-dua cara boleh */}
@@ -71,7 +71,7 @@ export default function Vans() {
             <Link to="?type=rugged">Rugged</Link>
             <Link to=".">Clear</Link> */}
 
-<button
+                <button
                     onClick={() => handleFilterChange("type", "simple")}
                     className={
                         `van-type simple ${typeFilter === "simple" ? "selected" : ""}`

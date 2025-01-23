@@ -18,6 +18,54 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+/* //header tittle */
+.header-title {
+  font-size: 2.5rem; /* Slightly larger font size */
+  font-weight: 800; /* Extra bold for emphasis */
+  color: #161616; /* Dark color for contrast */
+  margin-bottom: 30px; /* More space below the title */
+  text-align: left; /* Align text to the left */
+  font-family: 'Inter', sans-serif; /* Modern sans-serif font */
+  line-height: 1.2; /* Tighter line height */
+  position: relative; /* For pseudo-element positioning */
+  display: inline-block; /* To contain the gradient underline */
+}
+
+/* Gradient Underline Effect */
+.header-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px; /* Position the underline below the text */
+  width: 100%;
+  height: 4px; /* Thickness of the underline */
+  background: linear-gradient(90deg, #FF8C38, #E6762E); /* Gradient effect */
+  border-radius: 2px; /* Rounded corners for the underline */
+  transform: scaleX(0); /* Start with no width */
+  transform-origin: left; /* Animate from the left */
+  transition: transform 0.3s ease; /* Smooth animation */
+}
+
+/* Hover Effect for Underline */
+.header-title:hover::after {
+  transform: scaleX(1); /* Expand the underline on hover */
+}
+
+/* Optional: Add a subtle shadow for depth */
+.header-title {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Add a background gradient to the text */
+.header-title {
+  background: linear-gradient(90deg, #FF8C38, #E6762E);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+
 /* Remove default list styles */
 ul, ol {
   list-style: none;

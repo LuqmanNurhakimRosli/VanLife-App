@@ -5,6 +5,8 @@
     max-width: 1200px;
     margin: 0 auto;
     padding-top: 80px; /* Adjust for fixed header */
+    text-align: center;
+
   }
   
   .van-list-container h1 {
@@ -85,9 +87,11 @@
       color: white;
   }
   .filter-container {
+    align-items: center;
+    justify-content: center;
     display: flex;
     gap: 10px;
-    margin-bottom: 20px;
+    margin: 5px 0 20px;
 }
 
 .filter-container button {
