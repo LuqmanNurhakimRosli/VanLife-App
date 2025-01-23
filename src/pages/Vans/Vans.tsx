@@ -80,13 +80,15 @@ export default function Vans() {
         >
             Rugged
         </button>
-        <button
+        { typeFilter ? 
+          <button
             onClick={() => setSearchParams({})}
             data-type="clear"
             data-active={typeFilter === ""}
         >
             Clear
         </button>
+        : null}
               </div>
 
           <div className="van-list">
