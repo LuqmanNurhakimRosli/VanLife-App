@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../css/vandetail.css';
 
@@ -13,7 +13,9 @@ interface Van {
 
 export default function VanDetail() {
     const params = useParams();
-    const [van, setVan] = useState<Van | null>(null);
+    const location = useLocation();
+
+    const [van, setVan] = useState<Van | null>(null);   
 
     useEffect(() => {
         fetch(`/api/vans/${params.id}`)
