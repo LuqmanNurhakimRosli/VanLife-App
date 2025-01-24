@@ -34,7 +34,9 @@ export default function Vans() {
     //nak dsiplay render  semua vans based on useEffect
     const vanElements = displayedVans.map((van) => (
         <div key={van.id} className="van-tile">
-          <Link to={van.id} state={{search: `?${searchParams.toString()}`}} >
+          <Link to={van.id} state={{search: 
+          `?${searchParams.toString()}`,
+           type: typeFilter }} >
             <img src={van.imageUrl} alt={van.name} />
             <div className="van-info">
               <h3>{van.name}</h3>

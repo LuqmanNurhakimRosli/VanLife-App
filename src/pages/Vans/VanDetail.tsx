@@ -24,18 +24,15 @@ export default function VanDetail() {
             .catch(error => console.error("Error fetching van details:", error));
     }, [params.id]);
 
+    const  search = location.state?.search || "";
+    const type = location.state?.type || "All"
+
     return (
         <div className="van-detail-container">
-            <Link to= {
-                {
-                    pathname:"..",
-                    //location.state and location.search
-                    search: location.state?.search || "",
-                }
-            }
+            <Link to= {`..${search} ` }
                         relative="path"
                         className="back-button"
-                        >&larr; <span>Back Button</span>
+                        >&larr; <span>Back to {type} vans </span>
                     </Link>
             {van ? (
                 <div className="van-detail">
