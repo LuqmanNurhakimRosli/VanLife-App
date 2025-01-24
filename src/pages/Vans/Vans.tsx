@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import '../css/vans.css'
+import { getVans } from "../../api";
+import "../css/vans.css";
 
 // Define the Van interface
 interface Van {
@@ -12,86 +13,74 @@ interface Van {
 }
 
 export default function Vans() {
-    // Use the Van interface in useState
     const [vans, setVans] = React.useState<Van[]>([]);
-
-    const[searchParams, setSearchParams] = useSearchParams();
-    const typeFilter = searchParams.get("type")
+    const [loading, setLoading] = React.useState<boolean>(true); // Add loading state
+    const [searchParams, setSearchParams] = useSearchParams();
+    const typeFilter = searchParams.get("type");
 
     React.useEffect(() => {
-        fetch("/api/vans")
-            .then(res => res.json())
-            .then(data => setVans(data.vans))
-            .catch(error => console.error("Error fetching vans:", error));
+        async function loadVans() {
+            try {
+                const data = await getVans();
+                setVans(data);
+            } catch (error) {
+                console.error("Error fetching vans:", error);
+            } finally {
+                setLoading(false); // Set loading to false after fetching data
+            }
+        }
+
+        loadVans();
     }, []);
 
-
-    //nak filter by type
+    // Filter vans by type
     const displayedVans = typeFilter
-    ? vans.filter( van => van.type === typeFilter)
-    : vans;
+        ? vans.filter(van => van.type === typeFilter)
+        : vans;
 
-    //nak dsiplay render  semua vans based on useEffect
+    // Map over displayed vans to create van elements
     const vanElements = displayedVans.map((van) => (
         <div key={van.id} className="van-tile">
-
-          <Link to={van.id} state={{search: 
-          `?${searchParams.toString()}`,
-           type: typeFilter }} >
-
-            <img src={van.imageUrl} alt={van.name} />
-            <div className="van-info">
-              <h3>{van.name}</h3>
-              <p>${van.price}<span>/day</span></p>
-            </div>
-            <div className="van-type-container">
-              <i className={`van-type ${van.type} selected`}>{van.type}</i>
-            </div>
-          </Link>
+            <Link to={van.id} state={{ search: `?${searchParams.toString()}`, type: typeFilter }}>
+                <img src={van.imageUrl} alt={van.name} />
+                <div className="van-info">
+                    <h3>{van.name}</h3>
+                    <p>${van.price}<span>/day</span></p>
+                </div>
+                <div className="van-type-container">
+                    <i className={`van-type ${van.type} selected`}>{van.type}</i>
+                </div>
+            </Link>
         </div>
-      ));
+    ));
 
-      function handleFilterChange(key: string, value: string | null) {
+    function handleFilterChange(key: string, value: string | null) {
         setSearchParams((prev) => {
-          if (value === null) {
-            prev.delete(key);
-          } else {
-            prev.set( key, value);
-          }
-            return prev;    
-        })
+            if (value === null) {
+                prev.delete(key);
+            } else {
+                prev.set(key, value);
+            }
+            return prev;
+        });
+    }
 
-      }
-    
-      return (
+    return (
         <div className="van-list-container">
-          <h1 className="header-title">Explore our van options</h1>
+            <h1 className="header-title">Explore our van options</h1>
 
-          <div className="filter-container">
-            {/* //dua-dua cara boleh */}
-
-            {/* <Link to="?type=simple">Simple</Link>
-            <Link to="?type=luxury">Luxury</Link>
-            <Link to="?type=rugged">Rugged</Link>
-            <Link to=".">Clear</Link> */}
-
+            <div className="filter-container">
                 <button
                     onClick={() => handleFilterChange("type", "simple")}
-                    className={
-                        `van-type simple ${typeFilter === "simple" ? "selected" : ""}`
-                    }
+                    className={`van-type simple ${typeFilter === "simple" ? "selected" : ""}`}
                 >Simple</button>
                 <button
                     onClick={() => handleFilterChange("type", "luxury")}
-                    className={
-                        `van-type luxury ${typeFilter === "luxury" ? "selected" : ""}`
-                    }
+                    className={`van-type luxury ${typeFilter === "luxury" ? "selected" : ""}`}
                 >Luxury</button>
                 <button
                     onClick={() => handleFilterChange("type", "rugged")}
-                    className={
-                        `van-type rugged ${typeFilter === "rugged" ? "selected" : ""}`
-                    }
+                    className={`van-type rugged ${typeFilter === "rugged" ? "selected" : ""}`}
                 >Rugged</button>
 
                 {typeFilter ? (
@@ -100,12 +89,17 @@ export default function Vans() {
                         className="van-type clear-filters"
                     >Clear filter</button>
                 ) : null}
+            </div>
 
-              </div>
-
-          <div className="van-list">
-            {vanElements}
-          </div>
+            <div className="van-list">
+                {loading ? ( // Show loading message if data is still being fetched
+                    <h2 className="loading-message">Loading...</h2>
+                ) : vanElements.length > 0 ? ( // Render vanElements if data is loaded
+                    vanElements
+                ) : (
+                    <h2 className="no-vans-message">No vans found.</h2> // Show message if no vans match the filter
+                )}
+            </div>
         </div>
-      );
-    }
+    );
+}
