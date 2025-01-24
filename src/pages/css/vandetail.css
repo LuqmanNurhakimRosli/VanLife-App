@@ -8,18 +8,38 @@
     background-color: #f9f9f9; /* Light background color */
 }
 
-/* This will override the .back-button styles */
 .van-detail-container .back-button {
     text-decoration: none;
     color: #007BFF; /* Bootstrap primary color */
     font-size: 16px;
-    margin-top: 40px; /* Reduced margin */}
+    margin-top: 40px; /* Reduced margin */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: #f8f9fa; /* Light background */
+    border: 2px solid #007BFF;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
 
-/* Back button styles */
+.van-detail-container .back-button:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color: #007BFF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
 
+.van-detail-container .back-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
- .van-detail-container   .back-button:hover {
-    text-decoration: underline;
+.van-detail-container .back-button span {
+    font-weight: 500;
 }
 
 /* Van detail styles */
