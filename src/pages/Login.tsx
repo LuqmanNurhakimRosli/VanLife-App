@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom"
 function Login() {
     const [loginFormData, setLoginFormData] = useState({email: "", password: ""})
 
-    function handleSubmit(e) {
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
         console.log(loginFormData)
     }
 
-    function handleChange(e) {
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         const {name, value} = e.target
         setLoginFormData (prev => ({
             ...prev, [name] : value
@@ -22,7 +22,7 @@ function Login() {
       <form onSubmit={handleSubmit} className="login-form">
         
         <input name="email" onChange={handleChange} type="email" placeholder="Email" value={loginFormData.email}  />
-        <input name="password" onChange = {handleChange type="password" placeholder="Password" value={loginFormData.password}  }  />
+        <input name="password" onChange = {handleChange} type="password" placeholder="Password" value={loginFormData.password}  }  />
 
       </form>
 
