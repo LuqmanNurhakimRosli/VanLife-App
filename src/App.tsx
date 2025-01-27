@@ -16,6 +16,7 @@ import HostVansPhotos from './pages/Host/HostVansPhotos'
 import HostVansPrice from './pages/Host/HostVansPrice'
 import NotFound from './pages/NotFound'
 import Login from './pages/Login'
+import  Authenticator  from './auth/Authenticator'
 
 function App() {
   return (
@@ -34,11 +35,13 @@ function App() {
               <Route path="income" element={<Income />} />
               <Route path="vans" element={<HostVans />} />
 
-              <Route path="vans/:id" element={<HostVansDetail />} >
-                  <Route index element={<HostVansInfo />} />
-                  <Route path="pricing" element={<HostVansPrice />} />
-                  <Route path="photos" element={<HostVansPhotos />} />
-              </Route>
+                <Route element={<Authenticator />}>
+                  <Route path="vans/:id" element={<HostVansDetail />} >
+                      <Route index element={<HostVansInfo />} />
+                      <Route path="pricing" element={<HostVansPrice />} />
+                      <Route path="photos" element={<HostVansPhotos />} />
+                  </Route>
+                </Route>
               
               <Route path="reviews" element={<Reviews />} />
           </Route>
