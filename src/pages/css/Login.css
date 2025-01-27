@@ -16,6 +16,11 @@ h1 {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+h3 {
+    color: rgb(245, 10, 10);
+    font-weight: 500;
+}
+
 .login-form {
     display: flex;
     flex-direction: column;
