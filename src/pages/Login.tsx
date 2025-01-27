@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { loginUser } from "../api";
 import './css/Login.css';
 
@@ -18,18 +18,20 @@ function Login() {
     const [error, setError] = useState<ErrorResponse | null>(null);
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         setStatus("submitting");
-        setError(null);
-
         loginUser(loginFormData)
             .then((data: LoginResponse) => {
-                console.log(data);
+                console.log('Login successful, navigating to /host');
                 setError(null);
+                localStorage.setItem("loggedin", String(true))
+                navigate("/host", {replace: true})
             })
             .catch((error: ErrorResponse) => {
+                console.error('Login error:', error);
                 setError(error);
             })
             .finally(() => setStatus("idle"));
