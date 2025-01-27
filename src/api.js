@@ -17,9 +17,9 @@ function sleep(ms) {
 }
 
 export async function getVans(id) {
-    const url = ?  `/api/vans/${id}` : `/api/vans`;
+    const url = id ?  `/api/vans/${id}` : `/api/vans`;
     const res = await fetch(url);
-    id (!res.ok) {
+    if (!res.ok) {
         throw {
             message: "Failed to fetch van",
             statusText: res.statusText,

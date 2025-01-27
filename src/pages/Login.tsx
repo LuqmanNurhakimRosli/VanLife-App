@@ -1,6 +1,12 @@
 import { useState } from "react"
 import { useLocation } from "react-router-dom"
+import { loginUser } from "../api"
 import './css/Login.css';
+
+interface LoginResponse {
+    user: { id: string; name: string; }; 
+    token: string;
+}
 
 function Login() {
     const [loginFormData, setLoginFormData] = useState({email: "", password: ""})
@@ -10,7 +16,8 @@ function Login() {
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        console.log(loginFormData)
+        loginUser(loginFormData)
+            .then((data: LoginResponse) => console.log(data))
     }
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
