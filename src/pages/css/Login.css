@@ -6,6 +6,7 @@
     height: 100vh;
     background: linear-gradient(135deg, #FF8C38, #FF6F61);
     font-family: "Inter", sans-serif;
+    padding: 20px; /* Add padding for smaller screens */
 }
 
 h1 {
@@ -27,7 +28,7 @@ h3 {
     width: 100%;
     max-width: 400px;
     background: rgba(255, 255, 255, 0.95);
-    padding: 30px;
+    padding: 20px; /* Reduce padding for smaller screens */
     border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
@@ -60,8 +61,8 @@ h3 {
 
 .login-form > input:focus {
     outline: none;
-    border-color: #FF8C38; /* Primary color for focus state */
-    box-shadow: 0px 0px 8px rgba(255, 140, 56, 0.3); /* Shadow with primary color */
+    border-color: #FF8C38;
+    box-shadow: 0px 0px 8px rgba(255, 140, 56, 0.3);
 }
 
 .login-form > input::placeholder {
@@ -79,7 +80,7 @@ h3 {
 
 .login-form > button {
     padding: 12px;
-    background: #FF8C38; /* Primary color for button */
+    background: #FF8C38;
     border: none;
     border-radius: 8px;
     height: 50px;
@@ -93,7 +94,7 @@ h3 {
 }
 
 .login-form > button:hover {
-    background: #FFA07A; /* Lighter shade for hover state */
+    background: #FFA07A;
     transform: translateY(-2px);
 }
 
@@ -101,7 +102,7 @@ h3 {
     transform: translateY(0);
 }
 
-/* Optional: Add a subtle animation to the form inputs */
+/* Input animation */
 .login-form > input {
     animation: slideIn 0.5s ease-in-out;
 }
@@ -114,5 +115,50 @@ h3 {
     to {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 24px; /* Smaller font size for mobile */
+    }
+
+    .login-form {
+        padding: 15px; /* Reduce padding for smaller screens */
+    }
+
+    .login-form > input {
+        font-size: 14px; /* Smaller font size for inputs */
+        height: 40px; /* Smaller input height */
+    }
+
+    .login-form > button {
+        font-size: 14px; /* Smaller font size for button */
+        height: 45px; /* Smaller button height */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px; /* Even smaller font size for very small screens */
+    }
+
+    .login-form {
+        max-width: 90%; /* Allow form to take more width on small screens */
+    }
+
+    .login-form > input {
+        font-size: 12px; /* Smaller font size for very small screens */
+        height: 35px; /* Smaller input height */
+    }
+
+    .login-form > button {
+        font-size: 12px; /* Smaller font size for button */
+        height: 40px; /* Smaller button height */
     }
 }
