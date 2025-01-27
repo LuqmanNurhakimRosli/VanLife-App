@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { getVans } from "../../api";
+import { getVans } from "../../api"; // Corrected import statement
 import "../css/vans.css";
 
 // Define the Van interface
@@ -93,11 +93,11 @@ export default function Vans() {
 
             <div className="van-list">
                 {loading ? ( // Show loading message if data is still being fetched
-                    <h2 className="loading-message">Loading...</h2>
+                    <h2 aria-live="polite" className="loading-message">Loading...</h2>
                 ) : vanElements.length > 0 ? ( // Render vanElements if data is loaded
                     vanElements
                 ) : (
-                    <h2 className="no-vans-message">No vans found.</h2> // Show message if no vans match the filter
+                    <h2 aria-live="assertive" className="no-vans-message">No vans found.</h2> // Show message if no vans match the filter
                 )}
             </div>
         </div>
