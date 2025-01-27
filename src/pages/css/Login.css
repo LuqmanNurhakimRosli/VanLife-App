@@ -4,14 +4,14 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: linear-gradient(135deg, #FF8C38, #FF6F61); /* Gradient with primary color */
+    background: linear-gradient(135deg, #FF8C38, #FF6F61);
     font-family: "Inter", sans-serif;
 }
 
 h1 {
     margin-bottom: 20px;
     font-size: 28px;
-    color: white;
+    color: rgb(255, 255, 255);
     font-weight: 600;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
