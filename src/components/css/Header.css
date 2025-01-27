@@ -68,6 +68,24 @@ main {
   margin-top: 80px; /* Creates space below the fixed header */
 }
 
+.login-link {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Pushes the login link to the right */
+  text-decoration: none; /* Removes underline from the link */
+}
+
+.login-link img {
+  width: 40px; /* Set a specific width for the avatar */
+  height: 40px; /* Set a specific height for the avatar */
+  border-radius: 50%; /* Makes the image circular */
+  transition: transform 0.3s; /* Adds a smooth transition for hover effect */
+}
+
+.login-link:hover img {
+  transform: scale(1.1); /* Slightly enlarges the image on hover */
+}
+
 /* Responsive Breakpoints for Header */
 @media (max-width: 768px) {
   header {

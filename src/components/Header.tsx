@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import "./css/Header.css";
-
+import imageURL from '../assets/images/avatar-icon.jpg'
+ 
 function Header(): JSX.Element {
   return (
     <header>
@@ -29,6 +30,10 @@ function Header(): JSX.Element {
         >
           Vans
         </NavLink>
+        <Link to="/login" className="login-link"  >
+          <img src={imageURL} alt="Avatar" className=""/>
+        </Link>
+
       </nav>
     </header>
   );
