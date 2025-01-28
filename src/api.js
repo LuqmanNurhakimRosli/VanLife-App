@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore, collection, getDocs, doc, getDoc} from "firebase/firestore";
+import {getFirestore, collection, getDocs, doc, getDoc, query, where} from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
@@ -19,15 +19,6 @@ const db = getFirestore(app);
 //Refactoring the fetching function below
 const vansCollectionRef = collection(db, "vans");
 
-export async function getVans() {
-    const snapshot = await getDocs(vansCollectionRef)
-    const vans = snapshot.docs.map(doc => ({
-        ...doc.data(),
-        id: doc.id
-    }))
-    return vans
-}
-
 export async function getVan(id) {
     const docRef = doc(db, "vans", id)
     const snapshot = await getDoc(docRef)
@@ -37,18 +28,28 @@ export async function getVan(id) {
     }
 }
 
-export async function getHostVan(id) {
-    const url = id ? `/api/host/vans/${id}` : "/api/host/vans"
-    const res = await fetch(url)
-    if (!res.ok) {
-        throw {
-            message: "Failed to fetch vans",
-            statusText: res.statusText,
-            status: res.status
-        }
-    }
-    return await res.json()
+export async function getHostVans() {
+    const q = query(vansCollectionRef, where("hostId", "==", "123"))
+    const snapshot = await getDocs(q)
+    const vans = snapshot.docs.map(doc => ({
+        ...doc.data(),
+        id: doc.id
+    }))
+    return vans
 }
+
+// export async function getHostVan(id) {
+//     const url = id ? `/api/host/vans/${id}` : "/api/host/vans"
+//     const res = await fetch(url)
+//     if (!res.ok) {
+//         throw {
+//             message: "Failed to fetch vans",
+//             statusText: res.statusText,
+//             status: res.status
+//         }
+//     }
+//     return await res.json()
+// }
 
 const analytics = getAnalytics(app);
 // A function whose only purpose is to delay execution
