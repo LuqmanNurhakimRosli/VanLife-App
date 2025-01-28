@@ -1,34 +1,38 @@
-// export async function getVans() {
+import { initializeApp } from "firebase/app";
+import {getFirestore, collection, getDocs} from "firebase/firestore";
+import { getAnalytics } from "firebase/analytics";
 
-//     const res = await fetch("api/vans")
-    
-    
-//     const data = await res.json();
+const firebaseConfig = {
+  apiKey: "AIzaSyAFFocDdL1j5KoZ7yUpClDuAbBT6N53eM8",
+  authDomain: "vanlife-7454f.firebaseapp.com",
+  projectId: "vanlife-7454f",
+  storageBucket: "vanlife-7454f.firebasestorage.app",
+  messagingSenderId: "423522587972",
+  appId: "1:423522587972:web:0ba43c33f66f21b05c3311",
+  measurementId: "G-5FR24MRQJD"
+};
 
-//     return data.vans;
-// }
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);  
 
+//Refactoring the fetching function below
+const vansCollectionRef = collection(db, "vans");
+
+export async function getVans() {
+    const snapshot = await getDocs(vansCollectionRef)
+    const vans = snapshot.docs.map(doc => ({
+        ...doc.data(),
+        id: doc.id
+    }))
+    return vans
+}
+
+const analytics = getAnalytics(app);
 // A function whose only purpose is to delay execution
 // for the specified # of milliseconds when used w/ `await`
 // e.g. inside an async function:
 // await sleep(2000)  => pauses the function for 2 seconds before moving on
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(() => resolve(), ms))
-}
-
-export async function getVans(id) {
-    const url = id ? `/api/vans/${id}` : "/api/vans"
-    const res = await fetch(url)
-    if (!res.ok) {
-        throw {
-            message: "Failed to fetch vans",
-            statusText: res.statusText,
-            status: res.status
-        }
-    }
-    const data = await res.json()
-    return data.vans
-}
 
 export async function getHostVans(id) {
     const url = id ? `/api/host/vans/${id}` : "/api/host/vans"
