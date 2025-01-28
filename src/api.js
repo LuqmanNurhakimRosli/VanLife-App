@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore, collection, getDocs} from "firebase/firestore";
+import {getFirestore, collection, getDocs, doc, getDoc} from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
@@ -26,6 +26,19 @@ export async function getVans() {
         id: doc.id
     }))
     return vans
+}
+
+export async function getVan(id) {
+    const docRef = doc(db, "vans", id)
+    const docSnap = await getDoc(docRef)
+    if (!docSnap.exists()) {
+        throw {
+            message: "Failed to fetch van",
+            statusText: "Van not found",
+            status: 404
+        }
+    }
+    return docSnap.data()
 }
 
 const analytics = getAnalytics(app);
