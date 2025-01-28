@@ -1,0 +1,5 @@
+update-
+1. add real authentication
+2. build something unique
+3. Learn about loader  & action
+4. Check Remix Framework (Fullstack)
