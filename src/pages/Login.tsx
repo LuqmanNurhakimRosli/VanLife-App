@@ -19,19 +19,18 @@ function Login() {
 
     const location = useLocation();
     const navigate = useNavigate();
+    const from = location.state?.from || "/host";
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         setStatus("submitting");
         loginUser(loginFormData)
             .then((data: LoginResponse) => {
-                console.log('Login successful, navigating to /host');
                 setError(null);
                 localStorage.setItem("loggedin", String(true))
-                navigate("/host", {replace: true})
+                navigate(from, {replace: true})
             })
             .catch((error: ErrorResponse) => {
-                console.error('Login error:', error);
                 setError(error);
             })
             .finally(() => setStatus("idle"));
