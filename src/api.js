@@ -30,15 +30,24 @@ export async function getVans() {
 
 export async function getVan(id) {
     const docRef = doc(db, "vans", id)
-    const docSnap = await getDoc(docRef)
-    if (!docSnap.exists()) {
+    const snapshot = await getDoc(docRef)
+    return {
+        ...snapshot.data(),
+        id: snapshot.id
+    }
+}
+
+export async function getHostVan(id) {
+    const url = id ? `/api/host/vans/${id}` : "/api/host/vans"
+    const res = await fetch(url)
+    if (!res.ok) {
         throw {
-            message: "Failed to fetch van",
-            statusText: "Van not found",
-            status: 404
+            message: "Failed to fetch vans",
+            statusText: res.statusText,
+            status: res.status
         }
     }
-    return docSnap.data()
+    return await res.json()
 }
 
 const analytics = getAnalytics(app);
