@@ -82,8 +82,9 @@
 import { signInWithGoogle } from "../firebase";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import "./css/Login.css"
 
-function Logic() {
+function Login() {
     const [status, setStatus] = useState<"idle" | "submitting">("idle");
     const [error, setError] = useState<string | null>(null);
 
@@ -98,6 +99,8 @@ function Logic() {
             setStatus("idle"); // Corrected state management
             navigate(from, { replace: true });
         } catch (error) {
+            console.error(error);
+            console.log('Error object:', error); // Added console logging
             setError("Failed to log in with Google");
             setStatus("idle"); // Ensure status is set to idle on error
         }
@@ -116,4 +119,4 @@ function Logic() {
     );
 }
 
-export default Logic; // Don't forget to export the component
+export default Login; // Don't forget to export the component

@@ -1,6 +1,6 @@
 import {initializeApp} from "firebase/app";
 import {getFirestore} from "firebase/firestore";
-import { getAuth, GoogleAuthProvider, signInAnonymously, signOut } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithRedirect,  signOut } from "firebase/auth";
 
 //firebase config
 const firebaseConfig = {
@@ -21,16 +21,24 @@ export const db = getFirestore(app)
 //Google Authentication
 const provider = new GoogleAuthProvider()
 
+// export const signInWithGoogle = async () => {
+//     try {
+//         const result = await signInWithPopup(auth, provider)
+//         const user = result.user
+//         localStorage.setItem("loggedin", String(true))
+//         localStorage.setItem("user", JSON.stringify(user))
+//         return user
+//     } catch(error) {
+//         console.log("Google Sign-In Erro:", error)
+//         throw error
+//     }
+// }
 export const signInWithGoogle = async () => {
     try {
-        const result = await signInWithPopup(auth, provider)
-        const user = result.user
-        localStorage.setItem("loggedin", String(true))
-        localStorage.setItem("user", JSON.stringify(user))
-        return user
-    } catch(error) {
-        console.log("Google Sign-In Erro:", error)
-        throw error
+        await signInWithRedirect(auth, provider);
+    } catch (error) {
+        console.log("Google Sign-In Error:", error);
+        throw error;
     }
 }
 
