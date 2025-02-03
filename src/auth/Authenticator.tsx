@@ -2,6 +2,7 @@ import { Outlet, Navigate, useLocation } from "react-router-dom"
 
 export default function Authenticator() {
     const isLoggedIn = localStorage.getItem("loggedin")
+    
     const location = useLocation();
 
     if (!isLoggedIn) {

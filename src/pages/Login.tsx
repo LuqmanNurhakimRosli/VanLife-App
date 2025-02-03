@@ -1,79 +1,119 @@
-import { useState } from "react";
+// import { useState } from "react";
+// import { useLocation, useNavigate } from "react-router-dom";
+// import { loginUser } from "../api";
+// import {signInWithGoogle} from '../firebase'
+// import './css/Login.css';
+
+// interface LoginResponse {
+//     user: { id: string; name: string; };
+//     token: string;
+// }
+
+// interface ErrorResponse {
+//     message: string;
+// }
+
+// function Login() {
+//     const [loginFormData, setLoginFormData] = useState({ email: "", password: "" });
+//     const [status, setStatus] = useState<"idle" | "submitting">("idle");
+//     const [error, setError] = useState<ErrorResponse | null>(null);
+
+//     const location = useLocation();
+//     const navigate = useNavigate();
+//     const from = location.state?.from || "/host";
+
+//     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+//         e.preventDefault();
+//         setStatus("submitting");
+//         loginUser(loginFormData)
+//             .then((data: LoginResponse) => {
+//                 setError(null);
+//                 localStorage.setItem("loggedin", String(true))
+//                 navigate(from, {replace: true})
+//             })
+//             .catch((error: ErrorResponse) => {
+//                 setError(error);
+//             })
+//             .finally(() => setStatus("idle"));
+//     }
+
+//     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+//         const { name, value } = e.target;
+//         setLoginFormData((prev) => ({
+//             ...prev,
+//             [name]: value,
+//         }));
+//     }
+
+//     return (
+//         <div className="login-container">
+//             {location.state?.message && <h3>{location.state.message}</h3>}
+//             <h1>Sign in to your account</h1>
+//             {error?.message && <h3>{error.message}</h3>}
+
+//             <form onSubmit={handleSubmit} className="login-form">
+//                 <input
+//                     name="email"
+//                     onChange={handleChange}
+//                     type="email"
+//                     placeholder="Email"
+//                     value={loginFormData.email}
+//                     disabled={status === "submitting"}
+//                 />
+//                 <input
+//                     name="password"
+//                     onChange={handleChange}
+//                     type="password"
+//                     placeholder="Password"
+//                     value={loginFormData.password}
+//                     disabled={status === "submitting"}
+//                 />
+
+//                 <button disabled={status === "submitting"}>
+//                     {status === "submitting" ? "Logging in..." : "Log in"}
+//                 </button>
+//             </form>
+//         </div>
+//     );
+// }
+
+// export default Login;
+
+import { signInWithGoogle } from "../firebase";
 import { useLocation, useNavigate } from "react-router-dom";
-import { loginUser } from "../api";
-import './css/Login.css';
+import { useState } from "react";
 
-interface LoginResponse {
-    user: { id: string; name: string; };
-    token: string;
-}
-
-interface ErrorResponse {
-    message: string;
-}
-
-function Login() {
-    const [loginFormData, setLoginFormData] = useState({ email: "", password: "" });
+function Logic() {
     const [status, setStatus] = useState<"idle" | "submitting">("idle");
-    const [error, setError] = useState<ErrorResponse | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from || "/host";
 
-    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-        e.preventDefault();
-        setStatus("submitting");
-        loginUser(loginFormData)
-            .then((data: LoginResponse) => {
-                setError(null);
-                localStorage.setItem("loggedin", String(true))
-                navigate(from, {replace: true})
-            })
-            .catch((error: ErrorResponse) => {
-                setError(error);
-            })
-            .finally(() => setStatus("idle"));
-    }
-
-    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-        const { name, value } = e.target;
-        setLoginFormData((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
+    async function handleGoogleLogin() {
+        setStatus("submitting"); // Corrected spelling
+        try {
+            await signInWithGoogle();
+            setStatus("idle"); // Corrected state management
+            navigate(from, { replace: true });
+        } catch (error) {
+            setError("Failed to log in with Google");
+            setStatus("idle"); // Ensure status is set to idle on error
+        }
     }
 
     return (
         <div className="login-container">
-            {location.state?.message && <h3>{location.state.message}</h3>}
+            {location.state?.message && <h3>{location.state.message}</h3>} {/* Fixed JSX syntax */}
             <h1>Sign in to your account</h1>
-            {error?.message && <h3>{error.message}</h3>}
+            {error && <div className="error-message">{error}</div>}
 
-            <form onSubmit={handleSubmit} className="login-form">
-                <input
-                    name="email"
-                    onChange={handleChange}
-                    type="email"
-                    placeholder="Email"
-                    value={loginFormData.email}
-                    disabled={status === "submitting"}
-                />
-                <input
-                    name="password"
-                    onChange={handleChange}
-                    type="password"
-                    placeholder="Password"
-                    value={loginFormData.password}
-                    disabled={status === "submitting"}
-                />
-
-                <button disabled={status === "submitting"}>
-                    {status === "submitting" ? "Logging in..." : "Log in"}
-                </button>
-            </form>
+            <button onClick={handleGoogleLogin} disabled={status === "submitting"}>
+                {status === "submitting" ? "Logging in..." : "Sign in with Google"} {/* Corrected spelling */}
+            </button>
         </div>
     );
 }
 
-export default Login;
+export default Logic; // Don't forget to export the component
