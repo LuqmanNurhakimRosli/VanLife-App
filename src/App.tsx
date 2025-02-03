@@ -16,7 +16,7 @@ import HostVansPhotos from './pages/Host/HostVansPhotos';
 import HostVansPrice from './pages/Host/HostVansPrice';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
-import Authenticator from './auth/authenticator'; // Ensure the file name matches exactly
+import Authenticator from './auth/Authenticator'; // Ensure the file name matches exactly
 
 function App() {
     return (
