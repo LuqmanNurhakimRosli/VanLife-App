@@ -13,6 +13,12 @@ function Header(): JSX.Element {
       {/* Navigation Links */}
       <nav className="nav">
         <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? "active-link" : undefined)}
+        >
+          Home
+        </NavLink>
+        <NavLink
           to="/host"
           className={({ isActive }) => (isActive ? "active-link" : undefined)}
         >
