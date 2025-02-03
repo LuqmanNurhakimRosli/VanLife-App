@@ -51,13 +51,12 @@ export async function getHostVans() {
 //     return await res.json()
 // }
 
-const analytics = getAnalytics(app);
 // A function whose only purpose is to delay execution
 // for the specified # of milliseconds when used w/ `await`
 // e.g. inside an async function:
 // await sleep(2000)  => pauses the function for 2 seconds before moving on
 
-export async function getHostVans(id) {
+export async function getVans(id) {
     const url = id ? `/api/host/vans/${id}` : "/api/host/vans"
     const res = await fetch(url)
     if (!res.ok) {
