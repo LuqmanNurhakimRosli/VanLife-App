@@ -11,13 +11,13 @@ import { getFirestore } from "firebase/firestore";
 
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAFFocDdL1j5KoZ7yUpClDuAbBT6N53eM8",
-    authDomain: "vanlife-7454f.firebaseapp.com",
-    projectId: "vanlife-7454f",
-    storageBucket: "vanlife-7454f.firebasestorage.app",
-    messagingSenderId: "423522587972",
-    appId: "1:423522587972:web:0ba43c33f66f21b05c3311",
-    measurementId: "G-5FR24MRQJD"
+  apiKey: "AIzaSyAFFocDdL1j5KoZ7yUpClDuAbBT6N53eM8",
+  authDomain: "vanlife-7454f.firebaseapp.com",
+  projectId: "vanlife-7454f",
+  storageBucket: "vanlife-7454f.firebasestorage.app",
+  messagingSenderId: "423522587972",
+  appId: "1:423522587972:web:0ba43c33f66f21b05c3311",
+  measurementId: "G-5FR24MRQJD"
   };
 
 // Initialize Firebase
@@ -25,8 +25,15 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 
-// Google Authentication Provider
+// Google Authentication Provider with Web Client ID
 const provider = new GoogleAuthProvider();
+provider.setCustomParameters({
+  prompt: "select_account", // Forces account selection every time
+});
+
+// Web Client ID from Firebase Console
+export const WEB_CLIENT_ID = "423522587972-iug1pjdo0m2cbjbrsij9pks1h1uff759.apps.googleusercontent.com";
+
 
 /**
  * Sign in with a Google popup.

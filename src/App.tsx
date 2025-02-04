@@ -16,9 +16,10 @@ import HostVansPhotos from './pages/Host/HostVansPhotos';
 import HostVansPrice from './pages/Host/HostVansPrice';
 import NotFound from './pages/NotFound';
 import Login from './pages/auth/Login';
-import Authenticator from './pages/auth/Authenticator'; // Ensure the file name matches exactly
+import ProtectedRoute from './pages/auth/ProtectedRoute'; // Ensure the file name matches exactly
 
-function App() {
+const App: React.FC = () => {
+
     return (
         <Router>
             <Routes>
@@ -31,7 +32,7 @@ function App() {
                     <Route path="vans/:id" element={<VanDetail />} />
 
                     {/* Protected routes */}
-                    <Route element={<Authenticator />}>
+                    <Route element={<ProtectedRoute />}>
                         <Route path="host" element={<HostLayout />}>
                             <Route index element={<Dashboard />} />
                             <Route path="income" element={<Income />} />
