@@ -79,44 +79,44 @@
 
 // export default Login;
 
-import { signInWithGoogle } from "../firebase/firebase";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import "./css/Login.css"
+// import { signInWithGoogle } from "../firebase/firebase";
+// import { useLocation, useNavigate } from "react-router-dom";
+// import { useState } from "react";
+// import "./css/Login.css"
 
-function Login() {
-    const [status, setStatus] = useState<"idle" | "submitting">("idle");
-    const [error, setError] = useState<string | null>(null);
+// function Login() {
+//     const [status, setStatus] = useState<"idle" | "submitting">("idle");
+//     const [error, setError] = useState<string | null>(null);
 
-    const location = useLocation();
-    const navigate = useNavigate();
-    const from = location.state?.from || "/host";
+//     const location = useLocation();
+//     const navigate = useNavigate();
+//     const from = location.state?.from || "/host";
 
-    async function handleGoogleLogin() {
-        setStatus("submitting"); // Corrected spelling
-        try {
-            await signInWithGoogle();
-            setStatus("idle"); // Corrected state management
-            navigate(from, { replace: true });
-        } catch (error) {
-            console.error(error);
-            console.log('Error object:', error); // Added console logging
-            setError("Failed to log in with Google");
-            setStatus("idle"); // Ensure status is set to idle on error
-        }
-    }
+//     async function handleGoogleLogin() {
+//         setStatus("submitting"); // Corrected spelling
+//         try {
+//             await signInWithGoogle();
+//             setStatus("idle"); // Corrected state management
+//             navigate(from, { replace: true });
+//         } catch (error) {
+//             console.error(error);
+//             console.log('Error object:', error); // Added console logging
+//             setError("Failed to log in with Google");
+//             setStatus("idle"); // Ensure status is set to idle on error
+//         }
+//     }
 
-    return (
-        <div className="login-container">
-            {location.state?.message && <h3>{location.state.message}</h3>} {/* Fixed JSX syntax */}
-            <h1>Sign in to your account</h1>
-            {error && <div className="error-message">{error}</div>}
+//     return (
+//         <div className="login-container">
+//             {location.state?.message && <h3>{location.state.message}</h3>} {/* Fixed JSX syntax */}
+//             <h1>Sign in to your account</h1>
+//             {error && <div className="error-message">{error}</div>}
 
-            <button onClick={handleGoogleLogin} disabled={status === "submitting"}>
-                {status === "submitting" ? "Logging in..." : "Sign in with Google"} {/* Corrected spelling */}
-            </button>
-        </div>
-    );
-}
+//             <button onClick={handleGoogleLogin} disabled={status === "submitting"}>
+//                 {status === "submitting" ? "Logging in..." : "Sign in with Google"} {/* Corrected spelling */}
+//             </button>
+//         </div>
+//     );
+// }
 
-export default Login; // Don't forget to export the component
+// export default Login; // Don't forget to export the component
