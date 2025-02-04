@@ -79,7 +79,7 @@
 
 // export default Login;
 
-import { signInWithGoogle } from "../firebase";
+import { signInWithGoogle } from "../firebase/firebase";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./css/Login.css"
